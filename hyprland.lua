@@ -4,7 +4,7 @@
 ---- MY PROGRAMS ----
 ---------------------
 local terminal = "alacritty"
-local fileManager = "ghostty -e yazi"
+local fileManager = "kitty -e yazi"
 local menu = "rofi -show drun"
 local mainMod = "SUPER"
 
@@ -23,6 +23,7 @@ hl.monitor({
 -------------------
 hl.on("hyprland.start", function()
 	-- noctalia
+	--hl.exec_cmd("noctalia")
 	hl.exec_cmd("qs -c noctalia-shell")
 
 	--vicinae
@@ -191,10 +192,7 @@ hl.bind("Pause", hl.dsp.exec_cmd("playerctl play-pause"))
 -- Основні бінди системи
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(
-	mainMod .. " + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
-)
+
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + R", hl.dsp.exec_cmd(menu))
