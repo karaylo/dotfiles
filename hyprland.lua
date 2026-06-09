@@ -26,7 +26,8 @@ hl.on("hyprland.start", function()
 	--hl.exec_cmd("noctalia")
 	hl.exec_cmd("qs -c noctalia-shell")
 
-	--vicinae
+	-- реки (обс)
+	hl.exec_cmd("sleep 5 && obs --minimize-to-tray --startreplaybuffer")
 
 	-- Оточення Wayland та Портали
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -167,6 +168,9 @@ hl.device({
 
 -- Бінди Noctalia Shell
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
+
+-- obs replays
+hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("obs-cmd replay save"))
 
 -- Fullscreen
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), { description = "Maximize" })
