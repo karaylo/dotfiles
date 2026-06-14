@@ -23,11 +23,7 @@ hl.monitor({
 -------------------
 hl.on("hyprland.start", function()
 	-- noctalia
-	--hl.exec_cmd("noctalia")
-	hl.exec_cmd("qs -c noctalia-shell")
-
-	-- реки (обс)
-	hl.exec_cmd("sleep 5 && obs --minimize-to-tray --startreplaybuffer")
+	hl.exec_cmd("noctalia")
 
 	-- Оточення Wayland та Портали
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -44,6 +40,8 @@ hl.on("hyprland.start", function()
 	-- Інші утиліти
 	hl.exec_cmd("sleep 4 && corectrl --minimize-systray")
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+
+	hl.exec_cmd("sleep 2 && obs --minimize-to-tray --startreplaybuffer")
 end)
 
 -------------------------------
@@ -167,9 +165,9 @@ hl.device({
 ---------------------
 
 -- Бінди Noctalia Shell
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 
--- obs replays
+-- replays
 hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("obs-cmd replay save"))
 
 -- Fullscreen
@@ -256,6 +254,8 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+hl.bind(mainMod .. "+ M", hl.dsp.exec_cmd("hyprshutdown"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
