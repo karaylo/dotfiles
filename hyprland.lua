@@ -261,12 +261,6 @@ hl.bind(mainMod .. "+ M", hl.dsp.exec_cmd("hyprshutdown"))
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
-hl.on("workspace.active", function(ws)
-	-- Кожного разу, коли фокус переходить на новий воркспейс,
-	-- примусово закриваємо special workspace (scratchpad).
-	hl.dispatch(hl.dsp.workspace.toggle_special("magic", { action = "off" }))
-end)
-
 hl.layer_rule({
 	name = "noctalia",
 	match = { namespace = "noctalia-background-.*$" },
