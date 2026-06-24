@@ -187,9 +187,9 @@ hl.bind("Print", hl.dsp.exec_cmd("grim -c - | wl-copy"))
 hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("hyprshot -m region -m DP-1 --clipboard-only"))
 
 -- Медіаплеєр
-hl.bind("Home", hl.dsp.exec_cmd("playerctl next"))
-hl.bind("Insert", hl.dsp.exec_cmd("playerctl previous"))
-hl.bind("Pause", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("Home", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 next"))
+hl.bind("Insert", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 previous"))
+hl.bind("Pause", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 play-pause"))
 
 -- Основні бінди системи
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
