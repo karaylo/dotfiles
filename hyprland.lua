@@ -25,6 +25,9 @@ hl.on("hyprland.start", function()
 	-- noctalia
 	hl.exec_cmd("noctalia")
 
+	-- polkit
+	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+
 	-- Оточення Wayland та Портали
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -220,7 +223,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 
 -- Скролінг воркспейсів мишкою
 --hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
---hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Перетягування / Ресайз мишкою
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
@@ -262,8 +265,11 @@ hl.bind(mainMod .. "+ M", hl.dsp.exec_cmd("hyprshutdown"))
 --------------------------------
 
 hl.layer_rule({
-	name = "noctalia",
-	match = { namespace = "noctalia-background-.*$" },
+	name = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$",
+	match = {
+		namespace = "noctalia-bar-default",
+	},
+	no_anim = true,
 	ignore_alpha = 0.5,
 	blur = true,
 	blur_popups = true,
