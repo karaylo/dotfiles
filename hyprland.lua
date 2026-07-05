@@ -66,7 +66,7 @@ hl.config({
 		gaps_out = 5,
 		border_size = 2,
 		col = {
-			active_border = "0xffd5aca9",
+			active_border = "#76946A",
 			inactive_border = "0xff3b3b3b",
 		},
 		resize_on_border = false,
@@ -190,9 +190,9 @@ hl.bind("Print", hl.dsp.exec_cmd("grim -c - | wl-copy"))
 hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("hyprshot -m region -m DP-1 --clipboard-only"))
 
 -- Медіаплеєр
-hl.bind("Home", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 next"))
-hl.bind("Insert", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 previous"))
-hl.bind("Pause", hl.dsp.exec_cmd("playerctl --player=spotify,firefox.instance_1_96 play-pause"))
+hl.bind("Home", hl.dsp.exec_cmd("playerctl -p spotify next || playerctl -p firefox next"))
+hl.bind("Insert", hl.dsp.exec_cmd("playerctl -p spotify previous || playerctl -p firefox previous"))
+hl.bind("Pause", hl.dsp.exec_cmd("playerctl -p spotify play-pause || playerctl -p firefox play-pause"))
 
 -- Основні бінди системи
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
