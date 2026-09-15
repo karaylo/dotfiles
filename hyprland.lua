@@ -31,7 +31,6 @@ hl.on("hyprland.start", function()
 	-- Оточення Wayland та Портали
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-	hl.exec_cmd("~/.config/hypr/scripts/portal-start.sh")
 
 	-- GTK та курсор
 	hl.exec_cmd("nwg-look -a")
@@ -87,6 +86,7 @@ hl.config({
 		},
 		blur = {
 			enabled = true,
+			--variant = "frost",
 			size = 3,
 			passes = 1,
 			vibrancy = 0.1696,
@@ -117,7 +117,8 @@ hl.config({
 		kb_rules = "",
 		kb_options = "grp:win_space_toggle",
 		follow_mouse = 1,
-		sensitivity = 0,
+		sensitivity = -0.1,
+		accel_profile = "flat",
 		touchpad = {
 			natural_scroll = false,
 		},
@@ -160,7 +161,7 @@ hl.gesture({
 
 hl.device({
 	name = "epic-mouse-v1",
-	sensitivity = -0.5,
+	sensitivity = 1,
 })
 
 ---------------------
@@ -193,6 +194,8 @@ hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("hyprshot -m region -m DP-1 --clipboar
 hl.bind("Home", hl.dsp.exec_cmd("playerctl -p spotify next || playerctl -p firefox next"))
 hl.bind("Insert", hl.dsp.exec_cmd("playerctl -p spotify previous || playerctl -p firefox previous"))
 hl.bind("Pause", hl.dsp.exec_cmd("playerctl -p spotify play-pause || playerctl -p firefox play-pause"))
+hl.bind("ALT + Home", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05+"), { repeating = true })
+hl.bind("ALT + Insert", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05-"), { repeating = true })
 
 -- Основні бінди системи
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
@@ -300,3 +303,6 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
