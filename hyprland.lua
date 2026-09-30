@@ -194,8 +194,8 @@ hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("hyprshot -m region -m DP-1 --clipboar
 hl.bind("Home", hl.dsp.exec_cmd("playerctl -p spotify next || playerctl -p firefox next"))
 hl.bind("Insert", hl.dsp.exec_cmd("playerctl -p spotify previous || playerctl -p firefox previous"))
 hl.bind("Pause", hl.dsp.exec_cmd("playerctl -p spotify play-pause || playerctl -p firefox play-pause"))
-hl.bind("ALT + Home", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05+"), { repeating = true })
-hl.bind("ALT + Insert", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05-"), { repeating = true })
+hl.bind("CTRL + Home", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05+"), { repeating = true })
+hl.bind("CTRL + Insert", hl.dsp.exec_cmd("playerctl -p spotify volume 0.05-"), { repeating = true })
 
 -- Основні бінди системи
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
