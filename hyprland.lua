@@ -86,7 +86,7 @@ hl.config({
 		},
 		blur = {
 			enabled = true,
-			--variant = "frost",
+			variant = "frost",
 			size = 3,
 			passes = 1,
 			vibrancy = 0.1696,
@@ -119,6 +119,10 @@ hl.config({
 		follow_mouse = 1,
 		sensitivity = -0.1,
 		accel_profile = "flat",
+        repeat_delay = 200,
+        repeat_rate = 40,
+
+        
 		touchpad = {
 			natural_scroll = false,
 		},
@@ -303,6 +307,8 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+
 
 -- For Noctalia Color templates
 require("noctalia").apply_theme()
